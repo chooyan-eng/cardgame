@@ -1,8 +1,9 @@
 module Model
   class Player
-    attr_reader :money, :jobs, :cards
+    attr_reader :name, :money, :jobs, :cards
 
-    def initialize(money = 0, jobs = [], cards = [])
+    def initialize(name, money = 0, jobs = [], cards = [])
+      @name = name
       @money = money
       @jobs = jobs 
       @cards = cards

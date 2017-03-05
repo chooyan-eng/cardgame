@@ -2,10 +2,10 @@ module Model
   class Player
     attr_reader :money, :jobs, :cards
 
-    def initialize()
-      @money = 0
-      @jobs = []
-      @cards = []
+    def initialize(money = 0, jobs = [], cards = [])
+      @money = money
+      @jobs = jobs 
+      @cards = cards
       @multiple_job = false
     end
 

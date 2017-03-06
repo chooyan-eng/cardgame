@@ -23,6 +23,16 @@ module Util
       player_obj(player_hash)
     end
 
+    def self.save_field(field)
+      field_hash = field_hash(field)
+      DATA_DIR.join("field.txt").write(JSON.dump(field_hash))
+    end
+    
+    def self.load_field()
+      field_hash = JSON.parse(DATA_DIR.join("field.txt").read)
+      field_obj(field_hash)
+    end
+
     private
     def self.save_player_public(player)
       player_hash = player_hash(player)
@@ -62,6 +72,20 @@ module Util
 
     def self.me?(player_name)
       player_name == Etc.getlogin
+    end
+
+    def self.field_hash(field_obj)
+      hash = {}
+      hash["cards"] = field_obj.cards
+      hash["current_player"] = field_obj.current_player
+      hash
+    end
+
+    def self.field_obj(field_hash)
+      Model::Field.new(
+                [],
+                field_hash["cards"], 
+                field_hash["current_player"])
     end
   end
 end

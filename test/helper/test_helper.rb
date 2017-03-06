@@ -1,5 +1,10 @@
 require 'model/player'
 require 'model/field'
+require 'pathname'
+require 'etc'
+
+DATA_DIR = Pathname.pwd.join("data")
+MY_DIR = DATA_DIR.join("#{Etc.getlogin}")
 
 def new_player_data
   Model::Player.new(Etc.getlogin, 300, [1], [1, 3, 5])

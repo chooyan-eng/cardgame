@@ -5,9 +5,6 @@ require 'model/player'
 
 module Util
   class DataIo
-    DATA_DIR = Pathname.pwd.join("data")
-    MY_DIR = DATA_DIR.join(Etc.getlogin)
-
     def self.save_player(player)
       MY_DIR.mkdir unless MY_DIR.exist?
       save_player_private(player)

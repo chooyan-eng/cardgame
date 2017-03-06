@@ -6,14 +6,12 @@ require 'etc'
 require 'pathname'
 
 class TestDataIo < Test::Unit::TestCase
-  DATA_DIR = Pathname.pwd.join("data")
-  MY_DIR = DATA_DIR.join("#{Etc.getlogin}")
-
   def test_save_player_data
     player = new_player_data
     Util::DataIo.save_player(player)
     assert_true(MY_DIR.join("public.txt").exist?)
     assert_true(MY_DIR.join("private.txt").exist?)
+    MY_DIR.children.each { |child| child.delete }
   end
 
   def test_save_correct_player_data
@@ -23,12 +21,14 @@ class TestDataIo < Test::Unit::TestCase
     assert_equal(player.money, saved_player.money)
     assert_equal(player.jobs, saved_player.jobs)
     assert_equal(player.cards, saved_player.cards)
+    MY_DIR.children.each { |child| child.delete }
   end
 
   def test_save_field_data
     field = new_field_data
     Util::DataIo.save_field(field)
     assert_true(DATA_DIR.join("field.txt").exist?)
+    MY_DIR.children.each { |child| child.delete }
   end
 
   def test_save_correct_field_data
@@ -36,6 +36,7 @@ class TestDataIo < Test::Unit::TestCase
     Util::DataIo.save_field(field)
     saved_field = Util::DataIo.load_field()
     assert_equal(field.cards, saved_field.cards)
+    MY_DIR.children.each { |child| child.delete }
   end
 
   private

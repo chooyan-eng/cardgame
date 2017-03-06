@@ -13,7 +13,8 @@ module Model
     end
 
     def next
-      next_index = @players.find_index(current_player) + 1
+      current_player_obj = @players.find { |player| player.name == current_player } 
+      next_index = @players.find_index(current_player_obj) + 1
       next_index = next_index % @players.size
       @current_player = @players[next_index].name
     end

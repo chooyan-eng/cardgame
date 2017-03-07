@@ -1,6 +1,6 @@
 require 'util/data_io'
 require 'handler/handler'
-require 'handler/init'
+require 'messenger/messenger'
 
 COMMANDS = ["init", "join", "status", "use", "choose"]
 
@@ -12,7 +12,7 @@ end
 handler = Handler.create(command, ARGV.slice(1, ARGV.size - 1))
 handler.exec
 
-# messenger = Messanger.create(handler.result.type)
-# messenger.out(handler.result.data)
+messenger = Messenger.create(handler.result.type)
+messenger.out(handler.result.messages)
 
 handler.save

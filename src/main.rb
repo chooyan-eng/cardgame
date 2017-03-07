@@ -1,3 +1,5 @@
+require 'pathname'
+require 'application'
 require 'util/data_io'
 require 'handler/handler'
 require 'messenger/messenger'

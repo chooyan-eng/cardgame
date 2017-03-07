@@ -1,3 +1,5 @@
+require 'i18n'
+
 module Messenger
   class Init
     def out(messages)
@@ -5,11 +7,11 @@ module Messenger
         puts ""
         case message.id
         when "200"
-          puts "[dryrun mode] You already have data listed below."
+          puts I18n.t(:init_200_1)
           puts ""
           message.args.each { |arg| puts "  - #{arg}" }
           puts ""
-          puts "If you are sure to delete all the data, type `init y`"
+          puts I18n.t(:init_200_2)
         when "201"
           puts "The game was initialized. Data listed below were deleted."
           puts ""

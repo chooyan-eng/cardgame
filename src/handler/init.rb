@@ -7,8 +7,8 @@ module Handler
     
     def initialize(command_args)
       @dryrun = command_args.nil? ||
-        !command_args.empty? || 
-        command_args[0] != 'y' 
+        command_args.empty? || 
+        command_args[0] != "y" 
       @result = Handler::Result.new
     end
 
@@ -22,7 +22,7 @@ module Handler
         @result.push("200", Util::Statuscheck.existing_data)
         return
       end
-
+      
       @result.push("201", Util::Statuscheck.existing_data)
       Util::DataIo.delete_all_data
     end

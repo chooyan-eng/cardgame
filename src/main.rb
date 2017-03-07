@@ -9,7 +9,7 @@ unless COMMANDS.include? command
   exit
 end
 
-handler = Handler.create(command)
+handler = Handler.create(command, ARGV.slice(1, ARGV.size - 1))
 handler.exec
 
 # messenger = Messanger.create(handler.result.type)

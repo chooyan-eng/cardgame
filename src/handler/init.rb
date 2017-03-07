@@ -13,17 +13,17 @@ module Handler
     end
 
     def exec
-      if Util::Statuscheck.game_initialized?
+      if already_initialized?
         @result.push("400")
         return
       end
 
       if @dryrun
-        @result.push("200", Util::Statuscheck.existing_data)
+        @result.push("200", data_files_and_folders)
         return
       end
       
-      @result.push("201", Util::Statuscheck.existing_data)
+      @result.push("201", data_files_and_folders)
       Util::DataIo.delete_all_data
     end
 
@@ -33,6 +33,15 @@ module Handler
     end
 
     def save
+    end
+
+    private 
+    def already_initialized?
+      Util::Statuscheck.game_initialized?
+    end
+
+    def data_files_and_folders
+      Util::Statuscheck.existing_data
     end
   end
 end

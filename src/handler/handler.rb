@@ -1,3 +1,10 @@
+require 'handler/init'
+require 'handler/join'
+require 'handler/status'
+require 'handler/use'
+require 'handler/choose'
+require 'handler/error'
+
 module Handler
   def self.create(command, command_args = [])
     case command

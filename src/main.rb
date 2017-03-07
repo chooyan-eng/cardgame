@@ -1,4 +1,6 @@
 require 'util/data_io'
+require 'handler/handler'
+require 'handler/init'
 
 COMMANDS = ["init", "join", "status", "use", "choose"]
 
@@ -7,10 +9,10 @@ unless COMMANDS.include? command
   exit
 end
 
-handler = Hander.create(command)
+handler = Handler.create(command)
 handler.exec
 
-messenger = Messanger.create(handler.result.type)
-messenger.out(handler.result.data)
+# messenger = Messanger.create(handler.result.type)
+# messenger.out(handler.result.data)
 
 handler.save

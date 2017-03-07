@@ -1,11 +1,5 @@
 require 'test/unit'
 require 'handler/handler'
-require 'handler/init'
-require 'handler/join'
-require 'handler/status'
-require 'handler/use'
-require 'handler/choose'
-require 'handler/error'
 
 class TestHandler < Test::Unit::TestCase
   def test_create_init_handler_instance

@@ -1,5 +1,6 @@
 require 'etc'
 require 'pathname'
+require 'fileutils'
 require 'json'
 require 'model/player'
 
@@ -28,6 +29,10 @@ module Util
     def self.load_field()
       field_hash = JSON.parse(DATA_DIR.join("field.txt").read)
       field_obj(field_hash)
+    end
+
+    def self.delete_all_data()
+      DATA_DIR.children.each{ |child| FileUtils.rm_rf(child) }
     end
 
     private

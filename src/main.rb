@@ -1,5 +1,3 @@
-require 'model/player'
-require 'model/field'
 require 'util/data_io'
 
 COMMANDS = ["init", "join", "status", "use", "choose"]

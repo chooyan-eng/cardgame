@@ -2,18 +2,17 @@ require 'model/player'
 require 'model/field'
 require 'util/data_io'
 
-# check if the command is "init"
-# if "init", delete all the data.
+COMMANDS = ["init", "join", "status", "use", "choose"]
 
-# load present status
+command = ARGV.empty? ? 'status' : ARGV[0]
+unless COMMANDS.include? command
+  exit
+end
 
-# if game has not started yet, ask player if he/she would join the game.
-# and game would start when two players join.
+handler = Hander.create(command)
+handler.exec
 
-# if game has already started, load current field and player data.
+messenger = Messanger.create(handler.result.type)
+messenger.out(handler.result.data)
 
-# if it's player's turn, ask player what to do.
-
-# if it's enemy's turn, show message to wait.
-
-# if game has already finished, show result message.
+handler.save

@@ -31,8 +31,12 @@ module Util
       field_obj(field_hash)
     end
 
-    def self.delete_all_data()
+    def self.delete_all_data
       DATA_DIR.children.each{ |child| FileUtils.rm_rf(child) }
+    end
+
+    def self.player_dirs
+      DATA_DIR.children.find { |child| child.directory? }
     end
 
     private

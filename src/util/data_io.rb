@@ -36,7 +36,7 @@ module Util
     end
 
     def self.player_dirs
-      DATA_DIR.children.find { |child| child.directory? }
+      DATA_DIR.children.find_all { |child| child.directory? }
     end
 
     private

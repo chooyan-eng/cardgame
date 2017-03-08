@@ -1,3 +1,12 @@
 en:
   init_200_1: "[dryrun mode] You already have data listed below."
   init_200_2: "If you are sure to delete all the data, type `init y`"
+  join_200_1: "If you are sure to join the game, type `join y`"
+  join_200_2: "%{player} is waiting for starting the game. If you are sure to join the game, type `join y`"
+  join_201_1: "You joined the game."
+  join_202_1: "Now %{player} is waiting for joining a member. type `join y` if you are sure to join the game."
+  join_203_1: "%{player1} and %{player2} are playing the game now."
+  join_204_1: "Now, two players are on the table. The game is starting!"
+  join_205_1: "対戦相手が参加するまで少しお待ちください。"
+  join_205_1: "Please wait for another player..."
+  join_400_1: "%{player1} and %{player2} are playing the game now.\nPlease wait for ending the game..."

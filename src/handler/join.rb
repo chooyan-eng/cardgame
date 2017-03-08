@@ -29,6 +29,7 @@ module Handler
 
       if @dryrun then
         @result.push("200", joined_players)
+        return
       end
 
       @result.push("201")
@@ -43,6 +44,7 @@ module Handler
     end
 
     def result
+      @result.type = "join"
       @result
     end
 
@@ -51,7 +53,10 @@ module Handler
 
     private
     def joined_players
-      Util::DataIo.player_dirs
+      player_dirs = Util::DataIo.player_dirs
+      return [] if player_dirs.nil? 
+      return player_dirs.map { |dir| dir.basename.to_s } if player_dirs.is_a?(Array)
+      return [player_dirs.basename.to_s]
     end
 
     def game_started?
